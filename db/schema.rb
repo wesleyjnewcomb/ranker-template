@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20170723191003) do
   create_table "ballots", force: :cascade do |t|
     t.bigint "contestant1_id", null: false
     t.bigint "contestant2_id", null: false
-    t.integer "contestant1_wins", default: 0, null: false
-    t.integer "contestant2_wins", default: 0, null: false
+    t.integer "contestant1_votes", default: 0, null: false
+    t.integer "contestant2_votes", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contestant1_id"], name: "index_ballots_on_contestant1_id"

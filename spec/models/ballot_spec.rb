@@ -8,25 +8,25 @@ RSpec.describe Ballot, type: :model do
 
   describe 'winner' do
     it 'should return the model of winner' do
-      ballot = FactoryGirl.create(:ballot, contestant1_wins: 100, contestant2_wins: 99)
+      ballot = FactoryGirl.create(:ballot, contestant1_votes: 100, contestant2_votes: 99)
       expect(ballot.winner).to be_a Contestant
       expect(ballot.winner).to eq ballot.contestant1
     end
 
     it 'should return nil if there\'s a tie' do
-      ballot = FactoryGirl.create(:ballot, contestant1_wins: 100, contestant2_wins: 100)
+      ballot = FactoryGirl.create(:ballot, contestant1_votes: 100, contestant2_votes: 100)
       expect(ballot.winner).to eq nil
     end
   end
 
   describe '#tie?' do
-    it 'should return true if the wins for each contestant are equal' do
-      ballot = FactoryGirl.create(:ballot, contestant1_wins: 100, contestant2_wins: 100)
+    it 'should return true if the votes for each contestant are equal' do
+      ballot = FactoryGirl.create(:ballot, contestant1_votes: 100, contestant2_votes: 100)
       expect(ballot.tie?).to eq true
     end
 
-    it 'should return false if the wins for each contestant are not equal' do
-      ballot = FactoryGirl.create(:ballot, contestant1_wins: 100, contestant2_wins: 99)
+    it 'should return false if the votes for each contestant are not equal' do
+      ballot = FactoryGirl.create(:ballot, contestant1_votes: 100, contestant2_votes: 99)
       expect(ballot.tie?).to eq false
     end
   end
