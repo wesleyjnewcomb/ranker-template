@@ -17,7 +17,7 @@ class Contestant < ApplicationRecord
 
   def votes
     votes = 0
-    ballots.each { |b| votes += b.votes }
+    ballots.each { |b| votes += b.votes(id) }
     votes
   end
 

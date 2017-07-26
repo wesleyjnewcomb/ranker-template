@@ -44,6 +44,22 @@ RSpec.describe Contestant, type: :model do
     end
   end
 
+  describe '#matches' do
+    it 'should return the number of matches the contestant has been in' do
+      all_ballots = (ballots1_win + ballots2_win + ballots1_lose + ballots2_lose)
+
+      expect(contestant.matches).to eq 60
+    end
+  end
+
+  describe '#votes' do
+    it 'should return the total number of votes the contestant has received' do
+      all_ballots = (ballots1_win + ballots2_win + ballots1_lose + ballots2_lose)
+
+      expect(contestant.votes).to eq 30
+    end
+  end
+
   describe '#winning_ballots' do
     it 'should return only the ballots' do
       winning_ballots = (ballots1_win + ballots2_win).sort
