@@ -24,6 +24,10 @@ group :development, :test do
   gem 'faker'
 end
 
+group :test do
+  gem 'coveralls', require: false
+end
+
 group :production do
   gem 'rails_12factor'
 end
