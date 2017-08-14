@@ -15,6 +15,7 @@ end
 
 group :development, :test do
   gem 'capybara'
+  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'launchy', require: false
   gem 'pry-rails'
