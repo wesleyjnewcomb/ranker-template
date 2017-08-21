@@ -82,4 +82,21 @@ RSpec.describe Api::V1::BallotsController, type: :controller do
       end
     end
   end
+
+  describe 'GET#random' do
+    it 'responds with 200' do
+      get :random
+
+      expect(response.status).to eq 200
+    end
+    it 'returns a random ballot' do
+      ballots = FactoryGirl.create_list(:ballot, 20)
+      get :random
+      json = JSON.parse(response.body)
+      expect(json).to have_key 'ballot'
+
+      ballot_ids = ballots.map { |b| b.id }
+      expect(ballot_ids).to include json['ballot']['id']
+    end
+  end
 end

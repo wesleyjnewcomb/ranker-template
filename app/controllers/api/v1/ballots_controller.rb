@@ -1,4 +1,6 @@
 class Api::V1::BallotsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def update
     data = JSON.parse(request.body.read)
     unless data.has_key? 'winner'
@@ -15,6 +17,11 @@ class Api::V1::BallotsController < ApplicationController
     else
       return render json: { error: 'Invalid winner' }, status: 422
     end
+    render json: @ballot, adapter: :json
+  end
+
+  def random
+    @ballot = Ballot.order('RANDOM()').first
     render json: @ballot, adapter: :json
   end
 end
