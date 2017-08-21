@@ -21,7 +21,7 @@ class Api::V1::BallotsController < ApplicationController
   end
 
   def random
-    @ballot = Ballot.order('RANDOM()').first
+    @ballot = Ballot.offset(rand(Ballot.count)).first
     render json: @ballot, adapter: :json
   end
 end
